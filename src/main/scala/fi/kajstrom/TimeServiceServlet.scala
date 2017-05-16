@@ -8,7 +8,8 @@ import play.api.libs.json._
 class TimeServiceServlet extends EfpScalaTimeServiceStack {
   //http://scalatra.org/getting-started/first-project.html
   get("/") {
-    Json.toJson(Map("currentTime" -> ISODateTimeFormat.dateTime().print(DateTime.now)))
+    response.setHeader("Content-Type", "application/json")
+    Ok(Json.toJson(Map("currentTime" -> ISODateTimeFormat.dateTime().print(DateTime.now))))
   }
 
 }
